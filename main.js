@@ -6,28 +6,39 @@ let courses = [
     ImgUrl:
       "https://i.pinimg.com/564x/3b/37/97/3b3797ea392f179cf7bdbc1f6249ac32.jpg",
     describe:
-      "JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, single-threaded, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles.",
+      "JavaScript is among the most powerful and flexible programming languages of the web. It powers the dynamic behavior on most websites, including this one.",
     extraImg: [, , , ,],
+    price: "149$"
   },
   {
     name: "Python",
     ImgUrl:
       "https://i.pinimg.com/564x/4f/34/5e/4f345e3e292dc0624fd407bfa8675d09.jpg",
     describe:
-      "Python is a general-purpose, versatile, and powerful programming language. It’s a great first language because it’s concise and easy to read. Whatever you want to do, Python can do it. From web development to machine learning to data science, Python is the language for you.",
-  },
+      "This course is designed to teach you the foundations in order to write simple programs in Python using the most common structures",
+      price: "99$"
+    },
   {
     name: "Java",
     ImgUrl:
       "https://i.pinimg.com/564x/e5/9a/52/e59a522e5010613ae986ede14b8916a3.jpg",
     describe:
-      "Java™ is the world's leading programming language and platform. AdoptOpenJDK uses infrastructure, build and test scripts to produce prebuilt binaries from OpenJDK™ class libraries and a choice of either OpenJDK or the Eclipse OpenJ9 VM.",
-  },
+      "Java is one of the most in-demand programming languages today. This course is designed to provide the basic skills and knowledge on Java.",
+      price: "249$"
+    },
   {
     name: "PHP",
     ImgUrl:
       "https://i.pinimg.com/564x/1f/36/53/1f3653a8f829b6bfabeed50c9b83cabd.jpg",
-    describe: `PHP is a server scripting language, and a powerful tool for making dynamic and interactive Web pages PHP is a widely-used, free, and efficient alternative to competitors such as Microsoft's ASP.`,
+    describe: `learn everything you need to become a professional PHP developer with practical exercises & projects.`,
+    price: "89$"
+  },
+  {
+    name: "C++",
+    ImgUrl:
+      "https://cdn-icons-png.flaticon.com/512/74/74897.png",
+    describe: `Learn C++, a high-performance programming language used in the world's most exciting engineering jobs -- from self-driving cars and robotics, to web browsers, media platforms, servers, and even video games.`,
+    price: "129$"
   },
 ];
 
@@ -36,19 +47,30 @@ const VeiwCard = (i) => {
   $(".itemDiscribe").show();
   $(".itemDiscribe").append(`
     <div class="describeItem "> 
-        <h4> gjgj <p class="desPrg"> kjfnvkvfbvfhdjbvfdjhbjdhbjhbsjhfbsrjhfbrjwfjsbvjrhgfuerygfergberuygb uyg   ggeghurehufh uhfurwhfu hiweur jsdnvkjsdfnksjfnbskjfnsk </br>  149$</p> </h4>
+        <h4> ${courses[i].name} <p class="desPrg">  ${courses[i].describe}  </br> ${courses[i].price} </p> </h4>
          <p class="itemP"> <button class="buyBtn">buy now</button>
          </p>
-        
+      
+         </div>
 
-         <div class="vidDiv">
+
+
+         
+         <video id="videoBG" autoplay muted loop> 
+         <source src="intellisense.mp4" type="video/mp4"></video>
+         
+         `
+         );
+};
+
+{/* <div class="vidDiv">
          <video autoplay muted loop id="myVideo">
          <source src="intellisense.mp4" type="video/mp4">
          Your browser does not support HTML5 video.
-         </video> </div>
+         </video> </div> */}
 
-         </div>`);
-};
+
+
 
 /* <div class="itemDiscribe">
 
@@ -71,7 +93,7 @@ const renderCards = () => {
   ////   we start here
   courses.forEach((element, i) => {
     $(".cards").append(`<div class="cardii" id = "card+${i}">
-    <img src='${element.ImgUrl}'  />
+    <img id="goToItemImg-${i}" src='${element.ImgUrl}'  />
     <h3 id="h1-${i}"> ${element.name} </h3>
     <p id="icon-${i}"> <i class="far fa-heart"></i> </p>
     </div>`);
@@ -91,7 +113,7 @@ const renderCards = () => {
       })
     );
 
-    $("#h1-" + i).click(() => {
+    $("#goToItemImg-" + i).click(() => {
       VeiwCard(i);
     });
     //اذا سويت كليلك يتغير الايكون واسوي بوش للفيفوريت اري

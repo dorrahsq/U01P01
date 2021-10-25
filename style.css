@@ -335,17 +335,22 @@ border: 3px solid rgba(199, 177, 79, 0.746); */
 }
 
 h4 {
-  position: absolute;
+  /* position: absolute; */
   /* top: 300px;
   left: 600px; */
-  margin: 100px 100px;
-  margin-right: 200px;
+  /* margin: 100px 100px;
+  margin-right: 200px; */
+  /* left: 14%;
+  right: 14%;
+  top: 30%; */
+  text-align: center;
   color: white;
   /* text-align: center; */
   /* align-items: center; */
   font-size: 100px;
-  z-index: 2;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* z-index: 2; */
+  font-family: 'Cantarell', sans-serif;
+
   /* line-height: 32px; */
   font-weight: normal;
 }
@@ -371,15 +376,31 @@ h4 p {
 }
 
 .buyBtn {
-  position: absolute;
-  z-index: 2;
+  /* position: absolute; */
+  /* z-index: 3; */
   align-items: center;
-  left: 46%;
-  top: 72%;
+  /* left: 45%;
+  top: 72%; */
   font-size: 30px;
+  color: rgba(199, 131, 5, 0.788);
+  padding: 6px 20px;
+  border-radius: 7px;
+  border: none;
+  font-family: 'Lato', sans-serif;
+  /* font-weight:"lighter"; */
+  /* outline: none; */
   /* margin-top: 330px;
   margin-left: 100px; */
 }
+
+.describeItem{
+  background-color: rgba(0, 0, 0, 0.87);
+  margin: 0  10%;
+  border-radius: 10px;
+  padding: 2%;
+  text-align: center;
+}
+
 
 /* 
 
@@ -431,3 +452,16 @@ h4 p {
   background: #ddd;
   color: black;
 } */
+
+
+#videoBG{
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
