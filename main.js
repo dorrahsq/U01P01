@@ -129,8 +129,9 @@ const renderCards = () => {
   ////   we start here
   courses.forEach((element, i) => {
     $(".cards").append(`<div class="cardii" id = "card+${i}">
+    <div class="parentDivItem" id="goToItem${i}">
     <img class="image" id="goToItemImg-${i}" src='${element.ImgUrl}'  />
-    <h3 id="h1-${i}"> ${element.name} </h3>
+    <h3 class"hItem" id="h1-${i}"> ${element.name} </h3>  </div>
     <p id="icon-${i}"> <i class="far fa-heart"></i> </p>
     </div>`);
 
@@ -158,7 +159,7 @@ const renderCards = () => {
       })
     );
 
-    $("#goToItemImg-" + i).click(() => {
+    $("#goToItem" + i).click(() => {
       VeiwCard(i);
     });
     //اذا سويت كليلك يتغير الايكون واسوي بوش للفيفوريت اري
@@ -198,8 +199,10 @@ $("#favoriteclick").click(() => {
 
   if (favoriteArray.length === 0) {
     $("#favoriteDiv").append(
-      `<span class="emptyWishlist"> Your favorite list is empty <i class="far fa-sad-tear"></i></span>`
-    );
+      `<span class="emptyWishlist"> Your favorite list is empty <i class="far fa-sad-tear"></i></span>
+      <button id="goToCourses"> <a href="index.html#gotothesecondpage"> go to courses </a></button> `
+    ); //problem in linnnnk 
+
   } else {
     favoriteArray.forEach((element, i) => {
       $("#favoriteDiv").append(`<ul class="favoriteUl">

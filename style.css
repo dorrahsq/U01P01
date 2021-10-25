@@ -182,16 +182,29 @@ h3 {
   margin: 20px;
   perspective: 180px;
 }
+.parentDivItem{
+  perspective: 180px;
+}
 
-.cardii img {
+.parentDivItem img {
   border: 3px solid rgba(199, 167, 79, 0.746);
   transition: 0.5s ease;
 }
 
-.cardii img:hover {
+.parentDivItem img:hover {
   cursor: pointer;
   transform: translateZ(20px);
 }
+.parentDivItem h3:hover {
+  cursor: pointer; 
+}
+.cardii i:hover{
+  cursor: pointer;  
+}
+/* 
+.hItem:hover{
+cursor: pointer;
+} */
 
 footer ul li {
   display: inline-block;
@@ -378,4 +391,30 @@ h4 p {
 #myBtn:hover {
   cursor: pointer; 
   background-color: rgb(248, 169, 43); /* background on hover */
+}
+#favoriteDiv button a{
+  text-decoration: none;
+  color: white;
+}
+#goToCourses{
+  align-items: center;
+  font-size: 30px;
+  padding: 7px 20px;
+  border-radius: 7px;
+  border: none;
+  font-family: "Lato", sans-serif;
+  transition: 0.5s ease;
+  background: rgb(0, 0, 0);
+  list-style: none;
+  text-align: center;
+  margin-top: 3%;
+}
+
+#goToCourses:hover {
+  cursor: pointer; 
+  background-color: rgb(248, 169, 43); /* background on hover */
+}
+
+#favoriteDiv{
+ text-align: center;
 }
