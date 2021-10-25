@@ -8,7 +8,15 @@ let courses = [
     describe:
       "JavaScript is among the most powerful and flexible programming languages of the web. It powers the dynamic behavior on most websites, including this one.",
     extraImg: [, , , ,],
-    price: "149$"
+    price: "149$",
+    courseincludes: [
+      "11.5 hours on-demand video",
+      "7 articles",
+      "50 downloadable resources",
+      "Full lifetime access",
+      "Access on mobile and TV",
+      "Certificate of completion",
+    ],
   },
   {
     name: "Python",
@@ -16,29 +24,60 @@ let courses = [
       "https://i.pinimg.com/564x/4f/34/5e/4f345e3e292dc0624fd407bfa8675d09.jpg",
     describe:
       "This course is designed to teach you the foundations in order to write simple programs in Python using the most common structures",
-      price: "99$"
-    },
+    price: "99$",
+    courseincludes: [
+      "20.5 hours on-demand video",
+      "8 articles",
+      "2 downloadable resources",
+      "Full lifetime access",
+      "Access on mobile and TV",
+      "Certificate of completion",
+    ],
+  },
   {
     name: "Java",
     ImgUrl:
       "https://i.pinimg.com/564x/e5/9a/52/e59a522e5010613ae986ede14b8916a3.jpg",
     describe:
       "Java is one of the most in-demand programming languages today. This course is designed to provide the basic skills and knowledge on Java.",
-      price: "249$"
-    },
+    price: "249$",
+    courseincludes: [
+      "68 hours on-demand video",
+      "21 articles",
+      "18 downloadable resources",
+      "Full lifetime access",
+      "Access on mobile and TV",
+      "Certificate of completion",
+    ],
+  },
   {
     name: "PHP",
     ImgUrl:
       "https://i.pinimg.com/564x/1f/36/53/1f3653a8f829b6bfabeed50c9b83cabd.jpg",
     describe: `learn everything you need to become a professional PHP developer with practical exercises & projects.`,
-    price: "89$"
+    price: "89$",
+    courseincludes: [
+      "38 hours on-demand video",
+      "// 4 articles",
+      "23 downloadable resources",
+      "Full lifetime access",
+      "Access on mobile and TV",
+      "Certificate of completion",
+    ],
   },
   {
     name: "C++",
-    ImgUrl:
-      "https://cdn-icons-png.flaticon.com/512/74/74897.png",
+    ImgUrl: "https://cdn-icons-png.flaticon.com/512/74/74897.png",
     describe: `Learn C++, a high-performance programming language used in the world's most exciting engineering jobs -- from self-driving cars and robotics, to web browsers, media platforms, servers, and even video games.`,
-    price: "129$"
+    price: "129$",
+    courseincludes: [
+      "11 hours on-demand video",
+      "3 articles",
+      "1 downloadable resources",
+      "Full lifetime access",
+      "Access on mobile and TV",
+      "Certificate of completion",
+    ],
   },
 ];
 
@@ -50,27 +89,24 @@ const VeiwCard = (i) => {
         <h4> ${courses[i].name} <p class="desPrg">  ${courses[i].describe}  </br> ${courses[i].price} </p> </h4>
          <p class="itemP"> <button class="buyBtn">buy now</button>
          </p>
-      
          </div>
-
-
-
-         
          <video id="videoBG" autoplay muted loop> 
          <source src="intellisense.mp4" type="video/mp4"></video>
-         
-         `
-         );
+         `);
+
+        //  <div><ul id="desUl"> This course includes ${courses[i].courseincludes.forEach((element) => {
+        //   <li>element </li>
+        // })}; </ul> </div>
+       
 };
 
-{/* <div class="vidDiv">
+{
+  /* <div class="vidDiv">
          <video autoplay muted loop id="myVideo">
          <source src="intellisense.mp4" type="video/mp4">
          Your browser does not support HTML5 video.
-         </video> </div> */}
-
-
-
+         </video> </div> */
+}
 
 /* <div class="itemDiscribe">
 
@@ -93,10 +129,19 @@ const renderCards = () => {
   ////   we start here
   courses.forEach((element, i) => {
     $(".cards").append(`<div class="cardii" id = "card+${i}">
-    <img id="goToItemImg-${i}" src='${element.ImgUrl}'  />
+    <img class="image" id="goToItemImg-${i}" src='${element.ImgUrl}'  />
     <h3 id="h1-${i}"> ${element.name} </h3>
     <p id="icon-${i}"> <i class="far fa-heart"></i> </p>
     </div>`);
+
+    {
+      /* <div class="container">
+  <img src="img_avatar.png" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">Hello World</div>
+  </div>
+</div> */
+    }
 
     if (
       JSON.parse(localStorage.getItem("favoriteArray")).filter((item) => {
@@ -191,3 +236,24 @@ navCourses.scrollIntoView({
   block: "end",
   inline: "nearest",
 });
+
+
+//Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
