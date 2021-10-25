@@ -152,8 +152,7 @@ img {
 
 .itemDiscribe {
   display: flex;
-  justify-content: center
-  ;
+  justify-content: center;
   margin-top: 100px;
 }
 
@@ -335,9 +334,7 @@ border: 3px solid rgba(199, 177, 79, 0.746); */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-
-
-h4{
+h4 {
   position: absolute;
   /* top: 300px;
   left: 600px; */
@@ -347,36 +344,33 @@ h4{
   /* text-align: center; */
   /* align-items: center; */
   font-size: 100px;
-z-index: 2;
-font-family: Verdana, Geneva, Tahoma, sans-serif;
-/* line-height: 32px; */
-font-weight: normal;
+  z-index: 2;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* line-height: 32px; */
+  font-weight: normal;
 }
-h4 p{
+h4 p {
   line-height: 40px;
 
   margin-top: 30px;
 }
 
-.desPrg{
+.desPrg {
   font-size: 20px;
 }
 
-
 #myVideo {
-
   box-shadow: -1px 4px 20px rgb(202, 200, 200);
 
   /* min-width: 100%; 
   min-height: 100%; */
   width: 1100px;
   opacity: 0.7;
-  
-  /* z-index: ; */
 
+  /* z-index: ; */
 }
 
-.buyBtn{
+.buyBtn {
   position: absolute;
   z-index: 2;
   align-items: center;

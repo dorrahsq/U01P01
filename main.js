@@ -7,8 +7,8 @@ let courses = [
       "https://i.pinimg.com/564x/3b/37/97/3b3797ea392f179cf7bdbc1f6249ac32.jpg",
     describe:
       "JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, single-threaded, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles.",
-  extraImg: [   ,    ,    ,     ,     ]
-    },
+    extraImg: [, , , ,],
+  },
   {
     name: "Python",
     ImgUrl:
@@ -34,8 +34,7 @@ let courses = [
 const VeiwCard = (i) => {
   $("main").hide();
   $(".itemDiscribe").show();
-  $(".itemDiscribe")
-    .append(`
+  $(".itemDiscribe").append(`
     <div class="describeItem "> 
         <h4> gjgj <p class="desPrg"> kjfnvkvfbvfhdjbvfdjhbjdhbjhbsjhfbsrjhfbrjwfjsbvjrhgfuerygfergberuygb uyg   ggeghurehufh uhfurwhfu hiweur jsdnvkjsdfnksjfnbskjfnsk </br>  149$</p> </h4>
          <p class="itemP"> <button class="buyBtn">buy now</button>
@@ -66,10 +65,10 @@ let favoriteArray = [];
 const renderCards = () => {
   $(".cards").innerHTML = "";
 
-  if(JSON.parse(localStorage.getItem("favoriteArray"))?.length) {
-    favoriteArray = [...JSON.parse(localStorage.getItem("favoriteArray"))]
+  if (JSON.parse(localStorage.getItem("favoriteArray"))?.length) {
+    favoriteArray = [...JSON.parse(localStorage.getItem("favoriteArray"))];
   }
-////   we start here
+  ////   we start here
   courses.forEach((element, i) => {
     $(".cards").append(`<div class="cardii" id = "card+${i}">
     <img src='${element.ImgUrl}'  />
@@ -77,22 +76,27 @@ const renderCards = () => {
     <p id="icon-${i}"> <i class="far fa-heart"></i> </p>
     </div>`);
 
-    if (JSON.parse(localStorage.getItem("favoriteArray")).filter((item)=>{
-      return item.name === element.name
-    }).length !== 0){
-      $("#icon-"+i).html(`<p id="icon-${i}"> <i class="fas fa-heart"></i> </p>`)
-
+    if (
+      JSON.parse(localStorage.getItem("favoriteArray")).filter((item) => {
+        return item.name === element.name;
+      }).length !== 0
+    ) {
+      $("#icon-" + i).html(
+        `<p id="icon-${i}"> <i class="fas fa-heart"></i> </p>`
+      );
     }
-    console.log(JSON.parse(localStorage.getItem("favoriteArray")).filter((item)=>{
-      return item.name === element.name
-    }));
-   
+    console.log(
+      JSON.parse(localStorage.getItem("favoriteArray")).filter((item) => {
+        return item.name === element.name;
+      })
+    );
+
     $("#h1-" + i).click(() => {
       VeiwCard(i);
     });
-//اذا سويت كليلك يتغير الايكون واسوي بوش للفيفوريت اري
+    //اذا سويت كليلك يتغير الايكون واسوي بوش للفيفوريت اري
     $("#icon-" + i).click(() => {
-      if (!favoriteArray.find(elm => elm.name === element.name)) {
+      if (!favoriteArray.find((elm) => elm.name === element.name)) {
         $("#icon-" + i).html(` <i class="fas fa-heart"></i>`);
         favoriteArray.push(element);
         localStorage.setItem("favoriteArray", JSON.stringify(favoriteArray));
@@ -124,20 +128,21 @@ $("#favoriteclick").click(() => {
   $("main").hide();
   $(".itemDiscribe").hide();
   $("#favoriteDiv").show();
-  
-  if(favoriteArray.length === 0 )  {
-      $("#favoriteDiv").append(`<span class="emptyWishlist"> Your favorite list is empty <i class="far fa-sad-tear"></i></span>`);
-  }
-  else{
-  favoriteArray.forEach((element, i) => {
-    $("#favoriteDiv").append(`<ul class="favoriteUl">
+
+  if (favoriteArray.length === 0) {
+    $("#favoriteDiv").append(
+      `<span class="emptyWishlist"> Your favorite list is empty <i class="far fa-sad-tear"></i></span>`
+    );
+  } else {
+    favoriteArray.forEach((element, i) => {
+      $("#favoriteDiv").append(`<ul class="favoriteUl">
     <li> <img class="allHomeImg" src="${element.ImgUrl}" alt="">
     <span class="favoritespan">${element.name}</span> 
     <p class="favoritePr"> ${element.describe} </p>
     </li> </ul>
     `);
-  });
-}
+    });
+  }
 
   // renderFavorite();
 });
@@ -157,9 +162,10 @@ $("#favoriteclick").click(() => {
 </li>
 </ul>  */
 
-// باللوكال لازم اسوي هناك مصفوفة فاضية واجي هنا اودي مصفوفتي هناك او عنصر عنصر بش هناك مدري بش صح بس الفكرة وحدة يعني
-
 let navCourses = document.querySelector(".courses2");
 
-navCourses.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-
+navCourses.scrollIntoView({
+  behavior: "smooth",
+  block: "end",
+  inline: "nearest",
+});
