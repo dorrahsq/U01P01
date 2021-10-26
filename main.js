@@ -1,8 +1,6 @@
-// let ul = document.querySelector(".secondPageUl");
-
-let courses = [
+let courses = JSON.parse(localStorage.getItem("courses")) || [
   {
-    name: "Java Script",
+    name: "JavaScript",
     ImgUrl:
       "https://i.pinimg.com/564x/3b/37/97/3b3797ea392f179cf7bdbc1f6249ac32.jpg",
     describe:
@@ -17,6 +15,8 @@ let courses = [
       "Access on mobile and TV",
       "Certificate of completion",
     ],
+    videoFile: "javascriot.mov",
+    inFav: false,
   },
   {
     name: "Python",
@@ -33,6 +33,8 @@ let courses = [
       "Access on mobile and TV",
       "Certificate of completion",
     ],
+    videoFile: "Python.mov",
+    inFav: false,
   },
   {
     name: "Java",
@@ -49,6 +51,8 @@ let courses = [
       "Access on mobile and TV",
       "Certificate of completion",
     ],
+    videoFile: "",
+    inFav: false,
   },
   {
     name: "PHP",
@@ -64,6 +68,8 @@ let courses = [
       "Access on mobile and TV",
       "Certificate of completion",
     ],
+    videoFile: "Php.mov",
+    inFav: false,
   },
   {
     name: "C++",
@@ -78,56 +84,46 @@ let courses = [
       "Access on mobile and TV",
       "Certificate of completion",
     ],
+    videoFile: "",
+    inFav: false,
   },
 ];
 
 const VeiwCard = (i) => {
   $("main").hide();
   $(".itemDiscribe").show();
+  const courseincludes = courses[i].courseincludes;
   $(".itemDiscribe").append(`
     <div class="describeItem "> 
         <h4> ${courses[i].name} <p class="desPrg">  ${courses[i].describe}  </br> ${courses[i].price} </p> </h4>
          <p class="itemP"> <button class="buyBtn">buy now</button>
          </p>
-         </div>
+   <div class="divForIncludes">
+   <ul id='courseincludes'><i id="archiveIcon" class="far fa-file-archive"></i>This course includes: </ul>
+   </div>
+   <span id="PreviewThisCourse"> <i class="fab fa-youtube"></i> Preview this course: </span>
+   <div class="videoDiv"><video class="videoInsideDec" src="${courses[i].videoFile}"  ></video>  </div>
+   </div>
          <video id="videoBG" autoplay muted loop> 
          <source src="intellisense.mp4" type="video/mp4"></video>
          `);
+  courseincludes.forEach((item, i) => {
+    $("#courseincludes").append(`<li class="includesLi">${item}</li>`);
+  });
 
-        //  <div><ul id="desUl"> This course includes ${courses[i].courseincludes.forEach((element) => {
-        //   <li>element </li>
-        // })}; </ul> </div>
-       
+  console.log(courseincludes);
 };
 
-{
-  /* <div class="vidDiv">
-         <video autoplay muted loop id="myVideo">
-         <source src="intellisense.mp4" type="video/mp4">
-         Your browser does not support HTML5 video.
-         </video> </div> */
-}
-
-/* <div class="itemDiscribe">
-
-<div class="imgDiv"> <img src="https://i.pinimg.com/564x/1b/56/80/1b5680cf4024c4e34cd052dddf1c83a7.jpg" alt=""></div>
-<div class="describeItem"> 
-    <h4> JavaScript</h4>
-     <p class="itemP"> JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, single-threaded, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles.</p>
-     </div>
-
-    </div> */
-
 let favoriteArray = [];
-
+let startPag = 3;
+let courses2 = courses.slice(0, startPag);
 const renderCards = () => {
-  $(".cards").innerHTML = "";
-
-  if (JSON.parse(localStorage.getItem("favoriteArray"))?.length) {
-    favoriteArray = [...JSON.parse(localStorage.getItem("favoriteArray"))];
+  $(".cards").html("");
+  if (startPag >= courses.length) {
+    $("#showMoreBtn").hide();
   }
   ////   we start here
-  courses.forEach((element, i) => {
+  courses2.forEach((element, i) => {
     $(".cards").append(`<div class="cardii" id = "card+${i}">
     <div class="parentDivItem" id="goToItem${i}">
     <img class="image" id="goToItemImg-${i}" src='${element.ImgUrl}'  />
@@ -135,74 +131,42 @@ const renderCards = () => {
     <p id="icon-${i}"> <i class="far fa-heart"></i> </p>
     </div>`);
 
-    {
-      /* <div class="container">
-  <img src="img_avatar.png" alt="Avatar" class="image">
-  <div class="overlay">
-    <div class="text">Hello World</div>
-  </div>
-</div> */
-    }
-
-    if (
-      JSON.parse(localStorage.getItem("favoriteArray")).filter((item) => {
-        return item.name === element.name;
-      }).length !== 0
-    ) {
+    if (element.inFav === true) {
       $("#icon-" + i).html(
         `<p id="icon-${i}"> <i class="fas fa-heart"></i> </p>`
       );
     }
-    console.log(
-      JSON.parse(localStorage.getItem("favoriteArray")).filter((item) => {
-        return item.name === element.name;
-      })
-    );
 
     $("#goToItem" + i).click(() => {
       VeiwCard(i);
     });
     //اذا سويت كليلك يتغير الايكون واسوي بوش للفيفوريت اري
     $("#icon-" + i).click(() => {
-      if (!favoriteArray.find((elm) => elm.name === element.name)) {
-        $("#icon-" + i).html(` <i class="fas fa-heart"></i>`);
-        favoriteArray.push(element);
-        localStorage.setItem("favoriteArray", JSON.stringify(favoriteArray));
-      } else {
-        $("#icon-" + i).html(`<i class="far fa-heart"></i>`);
-        const index = favoriteArray.indexOf(element);
-        console.log(index);
-        favoriteArray.splice(index, 1);
-        localStorage.setItem("favoriteArray", JSON.stringify(favoriteArray));
-      }
+      courses[i].inFav = !courses[i].inFav;
+      localStorage.setItem("courses", JSON.stringify(courses));
+      renderCards();
     });
   });
 };
 renderCards();
-
-// const renderFavorite = () =>{
-//     $("#favoriteDiv").innerHTML("");
-//     favoriteArray.forEach((element,i) => {
-//     $("#favoriteDiv").append(`<ul class="favoriteUl">
-//     <li>  <img src="${element.ImgUrl}" alt="">
-//     <span class="favoritespan">${element.name}</span>
-//     </li>
-//     ` )
-// });}
-
-// renderFavorite();
+//// fav show
 
 $("#favoriteclick").click(() => {
   $("main").hide();
   $(".itemDiscribe").hide();
   $("#favoriteDiv").show();
+  $("#favoriteDiv").html("");
+  favoriteArray = courses.filter((item) => {
+    return item.inFav;
+  });
+
+  $("#favoriteclick").text(`favorite ${favoriteArray.length}`);
 
   if (favoriteArray.length === 0) {
     $("#favoriteDiv").append(
       `<span class="emptyWishlist"> Your favorite list is empty <i class="far fa-sad-tear"></i></span>
-      <button id="goToCourses"> <a href="index.html#gotothesecondpage"> go to courses </a></button> `
-    ); //problem in linnnnk 
-
+      <button id="goToCourses"> <a href="index.html"> go to courses </a></button> `
+    ); //problem in linnnnk
   } else {
     favoriteArray.forEach((element, i) => {
       $("#favoriteDiv").append(`<ul class="favoriteUl">
@@ -217,20 +181,7 @@ $("#favoriteclick").click(() => {
   // renderFavorite();
 });
 
-// favoriteArray.forEach(element => {
-//     localStorage.setItem("fav", JSON.stringify(favoriteArray[element]));
-// });
-
-/* <ul class="favoriteUl">
-<li>  <img src="" alt="">
-    <span class="favoritespan"> java scipt</span> 
-    
-</li>
-<li>
-    <img src="" alt="">
-   <span class="favoritespan"> python</span> 
-</li>
-</ul>  */
+/////////////
 
 let navCourses = document.querySelector(".courses2");
 
@@ -240,12 +191,13 @@ navCourses.scrollIntoView({
   inline: "nearest",
 });
 
-
 //Get the button:
 mybutton = document.getElementById("myBtn");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () {
+  scrollFunction();
+};
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -260,3 +212,13 @@ function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
+
+/////// showMoreBtn
+
+$("#showMoreBtn").click(() => {
+  startPag += 3;
+  courses2 = courses.slice(0, startPag);
+  console.log(courses2);
+
+  renderCards();
+});
