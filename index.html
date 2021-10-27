@@ -3,24 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cantarell&family=Lato:ital,wght@0,100;1,100;1,300&family=Zen+Kurenaido&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Cantarell&family=Handlee&family=Italianno&family=Lato:ital,wght@0,100;1,100;1,300&family=Montserrat:ital@1&family=Roboto+Condensed&family=Zen+Kurenaido&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cantarell&family=Lato:ital,wght@0,100;1,100;1,300&family=Montserrat:ital@1&family=Roboto+Condensed:ital@1&family=Zen+Kurenaido&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dosis&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cantarell&family=Lato:ital,wght@0,100;1,100;1,300&display=swap"
       rel="stylesheet"
@@ -33,18 +32,20 @@
     <header>
       <ul>
         <li id="liLogog">
-          <img class="logoImge" src="Picture1.png" alt="logo" />
+          <img class="logoImge" src="img/Picture1.png" alt="logo" />
         </li>
+       
         <li class="search">
-          <input type="text" placeholder="what do you want to learn?" />
+          <input
+            id="searchBar"
+            type="text"
+            placeholder="what do you want to learn?"
+          />
           <i class="fas fa-search"></i>
         </li>
         <li id="lineInHeader"><a href="index.html"> Home </a></li>
         <li class="courses2"><a href="#gotothesecondpage"> Courses </a></li>
-
-        <!-- <a href="#gotothesecondpage"> Courses  </a> -->
-
-        <li><a href="">About us </a></li>
+        <li><a id="aboutUsId">About us </a></li>
         <li class="lastUl">
           <span id="favoriteclick"> favorite </span>
           <i id="firstIcon" class="fas fa-heart"></i>
@@ -52,34 +53,49 @@
       </ul>
     </header>
     <main>
-      <!-- <div class="vidDiv">
-        <video autoplay muted loop id="myVideo">
-        <source src="intellisense.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-        </video> </div> -->
-      <!-- <video src="Php.mov"></video> -->
       <div class="firstPage">
         <div class="wrapper">
           <h1>
             Learn more <br />
             Earn more
           </h1>
+          <p class="topP">
+            Our learning methodology developed over 5 years blends the
+            flexibility of online learning with the benefits of human
+            instruction, making it ideal for the current state of digital work.
+            We continuously evolve our high-touch, hands-on system of projects,
+            mentors, and quizzes so skills are always pertinent.
+          </p>
+          <button id="getStartBtn">
+            <a href="#gotothesecondpage"> GET STARTED </a>
+            <i class="fas fa-arrow-right"></i>
+          </button>
         </div>
-        <div class="secondPage"></div>
-
+        <div class="secondPage">
+          <div class="imgecontener">
+            <img id="backgroundor" src="orr.png" alt="" />
+          </div>
+        </div>
+        <div class="phonImg">
+          <img
+            id="phones"
+            src="mockup-featuring-two-iphones-12-pro-against-a-solid-color-background-5011-el1 (1).png"
+            alt=""
+          />
+        </div>
         <h2 id="gotothesecondpage">Courses</h2>
 
+        <div class="appendItemHere"></div>
         <div class="cards"></div>
         <div class="buttonDiv">
           <button id="showMoreBtn">Show more</button>
         </div>
       </div>
     </main>
-
     <div class="itemDiscribe"></div>
-
     <div id="favoriteDiv"></div>
-    <!-- <div class="allButFooter"></div> -->
+    <div class="aboutUsDiv0"></div>
+    <div class="serchArea"></div>
     <footer>
       <ul>
         <li>
@@ -93,7 +109,6 @@
         </li>
       </ul>
     </footer>
-
     <script
       src="https://kit.fontawesome.com/3711ed2c23.js"
       crossorigin="anonymous"
@@ -103,7 +118,6 @@
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
       crossorigin="anonymous"
     ></script>
-
     <script src="main.js"></script>
   </body>
 </html>

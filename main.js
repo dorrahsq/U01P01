@@ -4,7 +4,7 @@ let courses = JSON.parse(localStorage.getItem("courses")) || [
     ImgUrl:
       "https://i.pinimg.com/564x/3b/37/97/3b3797ea392f179cf7bdbc1f6249ac32.jpg",
     describe:
-      "JavaScript is among the most powerful and flexible programming languages of the web. It powers the dynamic behavior on most websites, including this one.",
+      "JavaScript is among the most powerful and flexible programming languages of the web. It powers the dynamic behavior on most websites.",
     extraImg: [, , , ,],
     price: "149$",
     courseincludes: [
@@ -15,13 +15,12 @@ let courses = JSON.parse(localStorage.getItem("courses")) || [
       "Access on mobile and TV",
       "Certificate of completion",
     ],
-    videoFile: "javascriot.mov",
+    videoFile: "javascript.mp4",
     inFav: false,
   },
   {
     name: "Python",
-    ImgUrl:
-      "https://i.pinimg.com/564x/4f/34/5e/4f345e3e292dc0624fd407bfa8675d09.jpg",
+    ImgUrl: "q.jpg",
     describe:
       "This course is designed to teach you the foundations in order to write simple programs in Python using the most common structures",
     price: "99$",
@@ -33,7 +32,7 @@ let courses = JSON.parse(localStorage.getItem("courses")) || [
       "Access on mobile and TV",
       "Certificate of completion",
     ],
-    videoFile: "Python.mov",
+    videoFile: "python.mp4",
     inFav: false,
   },
   {
@@ -51,13 +50,12 @@ let courses = JSON.parse(localStorage.getItem("courses")) || [
       "Access on mobile and TV",
       "Certificate of completion",
     ],
-    videoFile: "",
+    videoFile: "IMG_2332.mp4",
     inFav: false,
   },
   {
     name: "PHP",
-    ImgUrl:
-      "https://i.pinimg.com/564x/1f/36/53/1f3653a8f829b6bfabeed50c9b83cabd.jpg",
+    ImgUrl: "Elephant Chalkboard Wall Decal - Walmart_com.jpg",
     describe: `learn everything you need to become a professional PHP developer with practical exercises & projects.`,
     price: "89$",
     courseincludes: [
@@ -68,12 +66,12 @@ let courses = JSON.parse(localStorage.getItem("courses")) || [
       "Access on mobile and TV",
       "Certificate of completion",
     ],
-    videoFile: "Php.mov",
+    videoFile: "php.mp4",
     inFav: false,
   },
   {
     name: "C++",
-    ImgUrl: "https://cdn-icons-png.flaticon.com/512/74/74897.png",
+    ImgUrl: "a3d6b940-1ec8-4613-b7f1-251f99589a56.jpg",
     describe: `Learn C++, a high-performance programming language used in the world's most exciting engineering jobs -- from self-driving cars and robotics, to web browsers, media platforms, servers, and even video games.`,
     price: "129$",
     courseincludes: [
@@ -84,63 +82,58 @@ let courses = JSON.parse(localStorage.getItem("courses")) || [
       "Access on mobile and TV",
       "Certificate of completion",
     ],
-    videoFile: "",
+    videoFile: "FullSizeRender4.mp4",
     inFav: false,
   },
 ];
 
+let mySearchUndex = null;
+//open each card function
 const VeiwCard = (i) => {
   $("main").hide();
+  $("#favoriteDiv").hide();
+  // $(".serchArea").hide();
   $(".itemDiscribe").show();
+  $(".itemDiscribe").html(""); ///////////////////////////////////////////////////////////////////////
   const courseincludes = courses[i].courseincludes;
   $(".itemDiscribe").append(`
     <div class="describeItem "> 
-        <h4> ${courses[i].name} <p class="desPrg">  ${courses[i].describe}  </br> ${courses[i].price} </p> </h4>
-         <p class="itemP"> <button class="buyBtn">buy now</button>
-         </p>
-   <div class="divForIncludes">
-   <ul id='courseincludes'><i id="archiveIcon" class="far fa-file-archive"></i>This course includes: </ul>
-   </div>
-   <span id="PreviewThisCourse"> <i class="fab fa-youtube"></i> Preview this course: </span>
-   <div class="videoDiv"><video class="videoInsideDec" src="${courses[i].videoFile}"  ></video>  </div>
-   </div>
-         <video id="videoBG" autoplay muted loop> 
-         <source src="intellisense.mp4" type="video/mp4"></video>
-         `);
+        <h4> ${courses[i].name} <p class="desPrg">  ${courses[i].describe}  </br> ${courses[i].price} </p> </h4><p class="itemP"> <button class="buyBtn">buy now</button> </p>  <div class="divForIncludes"><ul id='courseincludes'><i id="archiveIcon" class="far fa-file-archive"></i>This course includes: </ul> </div> <span id="PreviewThisCourse"> <i class="fab fa-youtube"></i> Preview this course: </span> <div class="videoDiv">
+        <video controls class="videoInsideDec"> <source src="${courses[i].videoFile}" type="video/mp4"> </video>  </div> </div> <video id="videoBG" autoplay muted loop>  <source src="intellisense.mp4" type="video/mp4"></video> `);
   courseincludes.forEach((item, i) => {
     $("#courseincludes").append(`<li class="includesLi">${item}</li>`);
   });
-
   console.log(courseincludes);
 };
-
+//renderhome
 let favoriteArray = [];
 let startPag = 3;
 let courses2 = courses.slice(0, startPag);
 const renderCards = () => {
-  $(".cards").html("");
+  $(".appendItemHere").html("");
   if (startPag >= courses.length) {
     $("#showMoreBtn").hide();
   }
-  ////   we start here
   courses2.forEach((element, i) => {
-    $(".cards").append(`<div class="cardii" id = "card+${i}">
-    <div class="parentDivItem" id="goToItem${i}">
-    <img class="image" id="goToItemImg-${i}" src='${element.ImgUrl}'  />
-    <h3 class"hItem" id="h1-${i}"> ${element.name} </h3>  </div>
-    <p id="icon-${i}"> <i class="far fa-heart"></i> </p>
-    </div>`);
-
+    if (i % 2 === 0) {
+      console.log(i);
+      $(".appendItemHere")
+        .append(`<div class="itemDivv">  <div class="item1"></div>  <div class="item1backgr"></div> <div class="imghere">
+    <img class="image" id="goToItem${i}" src='${element.ImgUrl}' alt=""> </div> <div class="descc"> <h3 class"hItem" id="h1-${i}">${element.name}</h3> <p class="allpr">${element.describe}</p> <p class="iconPr" id="icon-${i}"> <i class="far fa-heart"></i> </p> </div> </div>`);
+    } else {
+      console.log(i);
+      $(".appendItemHere").append(`<div class="itemDivv2">
+    <div class="item2"></div> <div class="item1backgr2"></div> <div class="imghere2">  <img  class="image" id="goToItem${i}" src='${element.ImgUrl}' alt=""> </div>  <div class="descc2">  <h3 class"hItem" id="h1-${i}">${element.name}</h3> <p class="allpr">${element.describe}</p> <p class="iconPr" id="icon-${i}"> <i class="far fa-heart"></i> </p> </div>  </div>`);
+    }
     if (element.inFav === true) {
       $("#icon-" + i).html(
         `<p id="icon-${i}"> <i class="fas fa-heart"></i> </p>`
       );
     }
-
     $("#goToItem" + i).click(() => {
       VeiwCard(i);
     });
-    //اذا سويت كليلك يتغير الايكون واسوي بوش للفيفوريت اري
+    //fav icon click
     $("#icon-" + i).click(() => {
       courses[i].inFav = !courses[i].inFav;
       localStorage.setItem("courses", JSON.stringify(courses));
@@ -150,39 +143,40 @@ const renderCards = () => {
 };
 renderCards();
 //// fav show
-
 $("#favoriteclick").click(() => {
   $("main").hide();
+  $(".aboutUsDiv0").hide();
   $(".itemDiscribe").hide();
+
   $("#favoriteDiv").show();
   $("#favoriteDiv").html("");
   favoriteArray = courses.filter((item) => {
     return item.inFav;
   });
-
   $("#favoriteclick").text(`favorite ${favoriteArray.length}`);
-
   if (favoriteArray.length === 0) {
     $("#favoriteDiv").append(
       `<span class="emptyWishlist"> Your favorite list is empty <i class="far fa-sad-tear"></i></span>
       <button id="goToCourses"> <a href="index.html"> go to courses </a></button> `
-    ); //problem in linnnnk
+    );
   } else {
     favoriteArray.forEach((element, i) => {
       $("#favoriteDiv").append(`<ul class="favoriteUl">
     <li> <img class="allHomeImg" src="${element.ImgUrl}" alt="">
-    <span class="favoritespan">${element.name}</span> 
+    <span id="name${i}" class="favoritespan">${element.name}</span> 
     <p class="favoritePr"> ${element.describe} </p>
+    
     </li> </ul>
     `);
+
+      /////click on name to show the item
+      $("#name" + i).click(() => {
+        VeiwCard(i);
+      });
     });
   }
-
-  // renderFavorite();
 });
-
 /////////////
-
 let navCourses = document.querySelector(".courses2");
 
 navCourses.scrollIntoView({
@@ -212,7 +206,18 @@ function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
+///aboutUs
+const showAboutUs = () => {
+  $("main").hide();
+  $("#favoriteDiv").hide();
+  $(".aboutUsDiv0").show();
+  $(".aboutUsDiv0").html("");
+  $(".aboutUsDiv0").append(
+    `<div class="aboutUsimgDiv" > <img class="aboutUsImg" src="https://images.pexels.com/photos/4974913/pexels-photo-4974913.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="">  </div><h1 class="aboutis">ABOUT US </h1> <p> At CODER , we believe everyone should have the opportunity to create progress through technology and develop the skills of tomorrow.  <p/> `
+  );
+};
 
+$("#aboutUsId").click(showAboutUs);
 /////// showMoreBtn
 
 $("#showMoreBtn").click(() => {
@@ -222,3 +227,41 @@ $("#showMoreBtn").click(() => {
 
   renderCards();
 });
+
+//search bar
+const filtercourses = () => {
+  let filterarray = [];
+  $("main").hide();
+  $(".serchArea").show();
+  $("#favoriteDiv").hide();
+  let mesage = $("#searchBar").val().toLowerCase();
+  for (let i = 0; i < courses.length; i++) {
+    if (courses[i].name.toLowerCase().includes(mesage)) {
+      mySearchUndex = i;
+      filterarray.push(courses[i]);
+    }
+  }
+  $("#searchBar").val("");
+
+  if (filterarray.length === 0) {
+    $(".serchArea").html("");
+    $(".serchArea").append(
+      '<div class="availablediv">This course isn`t available </br>  <a href="index.html"><button> see available courses</button> </a>  </div>'
+    );
+  } else
+    filterarray.forEach((element, i) => {
+      $(".serchArea").html("");
+      $(".serchArea")
+        .append(`<div class="itemDivv">  <div class="item1"></div>  <div class="item1backgr"></div> <div class="imghere">
+    <img class="image" id="goToItem-${i}" src='${element.ImgUrl}' alt=""> </div> <div class="descc"> <h3 class"hItem" id="h1-${i}">${element.name}</h3> <p class="allpr">${element.describe}</p> <p class="iconPr" id="icon-${i}"></p> </div> </div> </br> </br>`);
+      $("#goToItem-" + i).click(() => {
+        console.log(i);
+        $(".serchArea").hide();
+        $(".itemDiscribe").show();
+        VeiwCard(mySearchUndex);
+      });
+    });
+};
+
+
+$("#searchBar").change(filtercourses);
