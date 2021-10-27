@@ -50,7 +50,7 @@ let courses = JSON.parse(localStorage.getItem("courses")) || [
       "Access on mobile and TV",
       "Certificate of completion",
     ],
-    videoFile: "IMG_2332.mp4",
+    videoFile: "java.mp4",
     inFav: false,
   },
   {
@@ -82,7 +82,7 @@ let courses = JSON.parse(localStorage.getItem("courses")) || [
       "Access on mobile and TV",
       "Certificate of completion",
     ],
-    videoFile: "FullSizeRender4.mp4",
+    videoFile: "c++.mp4",
     inFav: false,
   },
 ];
@@ -99,10 +99,13 @@ const VeiwCard = (i) => {
   $(".itemDiscribe").append(`
     <div class="describeItem "> 
         <h4> ${courses[i].name} <p class="desPrg">  ${courses[i].describe}  </br> ${courses[i].price} </p> </h4><p class="itemP"> <button class="buyBtn">buy now</button> </p>  <div class="divForIncludes"><ul id='courseincludes'><i id="archiveIcon" class="far fa-file-archive"></i>This course includes: </ul> </div> <span id="PreviewThisCourse"> <i class="fab fa-youtube"></i> Preview this course: </span> <div class="videoDiv">
-        <video controls class="videoInsideDec"> <source src="${courses[i].videoFile}" type="video/mp4"> </video>  </div> </div> <video id="videoBG" autoplay muted loop>  <source src="intellisense.mp4" type="video/mp4"></video> `);
+        <video  class="videoInsideDec" controls> <source src="./${courses[i].videoFile}" type="video/mp4"/> </video>  </div> </div> <video id="videoBG" autoplay muted loop>  <source src="intellisense.mp4" type="video/mp4"></video> `);
   courseincludes.forEach((item, i) => {
     $("#courseincludes").append(`<li class="includesLi">${item}</li>`);
   });
+
+  // $(".videoInsideDec").html(`<source src="./${courses[i].videoFile}" type="video/mp4"/>`)
+  
   console.log(courseincludes);
 };
 //renderhome
@@ -147,7 +150,6 @@ $("#favoriteclick").click(() => {
   $("main").hide();
   $(".aboutUsDiv0").hide();
   $(".itemDiscribe").hide();
-
   $("#favoriteDiv").show();
   $("#favoriteDiv").html("");
   favoriteArray = courses.filter((item) => {
