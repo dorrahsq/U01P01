@@ -156,6 +156,7 @@ h1 {
   font-family: "Zen Kurenaido", sans-serif;
   font-size: 25px;
   margin-right: 16.5px;
+  text-align: justify;
 }
 .logoImge {
   position: absolute;
